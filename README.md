@@ -4,7 +4,7 @@
 ## 1.  Some preliminaries
 
   - Be sure you have your python environment and editor ready
-  - Be sure you have already signed up for the [https://openai.com/api/](OpenAI API)
+  - Be sure you have already signed up for the [OpenAI API](https://openai.com/api/)
   - Open a Terminal window on your laptop
   - Install the openai Python library and streamlit (``pip install openai streamlit``)
   - (Optional for today)  [Install git](https://github.com/git-guides/install-git) and [clone our repo](https://github.com/mit-ccc/MAS-S68-workshop)
