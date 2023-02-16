@@ -2,9 +2,13 @@
 
 """
 Creates a "training set" and "test set" from word/description pairs
-pulled from AAAI-20 paper "Multi-channel Reverse Dictionary Model"See
-https://github.com/thunlp/MultiRD for data and download the data into
+pulled from the code from AAAI-20 paper "Multi-channel Reverse Dictionary Model"
+See https://github.com/thunlp/MultiRD for data and download the data into
 this directory.  The file data_desc_c.json is the only one used here.
+
+(Note:  This data set is originally from Hill, et al (https://arxiv.org/abs/1504.00548)
+but the above paper, which uses the data set, is the only downloadble version I could
+find.)
 """
 
 import json

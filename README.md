@@ -16,14 +16,14 @@
 
 ## 2.  Running basic completion queries
 
-  Our task today:  Let's make a system that lets you describe a word and then guesses the word you mean.
+  Our goal today:  Let's make an application that lets you describe an English word and then guesses the word that you mean!
+  Such a tool could be used as a writing aid or by people who want to expand their vocabulary.  This is called the "reverse dictionary" problem.
   (Here are [100 examples of this task](https://github.com/mit-ccc/MAS-S68-workshop/blob/main/data/train.jsonl) from a research data set.)
   
   - First, go to the [OpenAI Playground page](https://platform.openai.com/playground)
-  - Type ``What are some words that mean "clothing that you wear on your head?"`` into the input box and hit Submit.
-  
-  - Translate the query to Python by pressing the "View code" button above the playground
-  - Copy the code and run it in a [Google Colab](https://colab.research.google.com/) session.   (Add ``print(response)`` to see the output)
+  - How well does GPT-3 work for this with a straightforward "zero-shot" prompt?    Type ``What are some words that mean "clothing that you wear on your head?"`` into the input box and hit Submit.
+  - You can see the corresponding API code for the query, in Python, by pressing the "View code" button above the playground
+  - Copy this code and run it in a [Google Colab](https://colab.research.google.com/) session.   (Add ``print(response)`` to see the output)
   - Now let's run the query in a standalone python script on your computer
     - Copy the code you have in Colab to a new python file, say ``reverse_dictionary.py``
     - Run ``python3 ./reverse_dictionary.py`` from the command line
@@ -45,7 +45,7 @@
   - Try your query in different models by changing the "model" parameter.
 
 ## 6.  Iterating on your prompt
-  - Back in the playground, try a few variations of zero-shot prompts.  Notice any differences in the results?
+  - Back in the Playground, try a few variations of zero-shot prompts.  Notice any differences in the results?
   - Is the output format consistent across different inputs for the same zero-shot prompting template?
   - Zero-shot vs. few-shot.  Try adding some examples to the prompt.  How to pick these?
   - Prompt guidlines.   [Basic tips from OpenAI](https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-openai-api)
@@ -68,9 +68,11 @@
       - [How to increase](https://help.openai.com/en/articles/6643435-how-do-i-get-more-tokens-or-increase-my-monthly-usage-limits)
   - [OpenAI Status page](https://status.openai.com/) Subscribe to this to stay abreast of operational problems with the API.  (These have been more frequent lately, especially for davinci models.)
   - Tracking costs:  Be aware of the [pricing](https://openai.com/api/pricing/) page and the [usage](https://platform.openai.com/account/usage) page.
-  - Adding retry logic to the Python call
+  - Error codes:  The most common Python exceptions you'll hit are RateLimitError (you've gone over the rate limit) and APIError or ServiceUnavailableError
+    (due to problems on OpenAI's end).   In the latter case, check the [status page](https://status.openai.com/).   ([More info](https://platform.openai.com/docs/guides/error-codes/python-library-error-types))
+  - Adding retry logic to the Python API call to guard against these problems.
 
-## 8.   Make it into an interactive dashboard
+## 8.   Make the script into an interactive dashboard
   - Intro to streamlit:   https://streamlit.io/
   - Let's turn our command-line script into a simple Streamlit dashboard.
     - Import streamlitm, and add a streamlit_app() method that lays out:
@@ -80,11 +82,18 @@
     - Start your dashboard from the command line with ``streamlit run reverse_dictionary.py``.  It will open a browser window.
   - Use caching (@st.cache_data decorations) to save API queries ([Streamlit caching](https://docs.streamlit.io/library/advanced-features/caching))
 
-## 9. Toward evaluation
-  - Make a training / test set
-  - Updating the code to run in batches
-  - For better hygiene, do a train/validation/test split.  https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7
-  - Evaluation metrics
+## 9. Evaluating our system
+  - First let's make training / validation sets for our task.
+  - As we are not (yet) doing fine-tuning of the model, the train set is solely for identifying prompt examples.
+  - There are a few data sets of (description, word) pairs out there already,  and we'll use one from a research paper by Hill et al originally published back in 2016 (https://arxiv.org/abs/1504.00548).
+  - Note that having just a train/validation split is just a shortcut for today's exercise.   For better
+    machine learning hygiene, we'd have a test set as well, and never look at it
+    -- see https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7 -- and then evaluate our best configuration on it.
+    That's because if we've tried a variety of configurations (number of prompt examples, model type, instruction wording), the one with the
+    best performance on the validation set may not be the one with the best performance on new data.
+  - Next we update the code to run in batches.  Here it may be important to pay attention to your rate limit.
+  - Evaluation metrics:   For our task, we can compute raw accuracy by counting the rate at which GPT-3's best guess is equal to the labeled guess.  (Discussion:  What shortcomings
+    does this have as an evaluation metric?)
   - Keep a notebook  ([example](https://github.com/mit-ccc/MAS-S68-workshop/blob/main/experiments.md))
 
 ## 10.  Useful resources

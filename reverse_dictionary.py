@@ -79,7 +79,7 @@ def get_words_for_definition(definition, examples_to_use=None):
 
 
 def read_batch_of_queries(filename):
-    """Reads a set of reverse dictionary train/test records as a list of dictionaries."""
+    """Reads a set of reverse dictionary labeled data as a list of dictionaries."""
     return [json.loads(line) for line in open(filename, "r").read().strip().split("\n")]
 
 
