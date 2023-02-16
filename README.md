@@ -41,10 +41,14 @@
   - frequency_penalty, presence_penalty
 
 ## 4.  Understanding the output
-  - choices array:  (will contain $n$ elements)
+  - choices array:  (will contain ``n`` elements)
      - choices[].text:  The completion text iself.
      - choices[].finish_reason:   ``stop`` or ``length`` depending on whether it hit a stop sequence or not.
-     - choices[].logprobs:   If logprobs is set, this will contain the log probabilities for the generated tokens ("token_logprobs") as well as the top-logprobs predicted tokens ("top_logprobs") with their logprobs for each token in the completion (and also in the prompt, if "echo" was set).  (Discussion question:  In what situation might the tokens in "top_logprobs" not contain the generated token, from "token_logprobs")   Two other arrays, ``text_offset`` and ``tokens``, will also appear here to tell you how the generated tokens map to the text.)
+     - choices[].logprobs:   If logprobs is set, this will be an object containing several arrays, each with length equal to the number of tokens generated (and also in the prompt, if "echo" was set).  The arrays are:
+         - ``token_logprobs``:  The log probabilities for the generated tokens ("token_logprobs")
+	 - ``top_logprobs``:  The log probabilities for the top-logprobs predicted tokens.     (Discussion question:  In what situation might the tokens in "top_logprobs" **not** contain the generated token, from "token_logprobs") 
+	 - ``token``:  The selected tokens
+	 - ``text_offset``:  Tells you how the tokens map into the words in the text
   - usage:  Summarizes how many tokens you used in this query.  (See below).
   - Parsing the response for what you care about
 
