@@ -1,7 +1,7 @@
 
 # MAS.S68 Python workshop 1
 
-1.  Some preliminaries
+## 1.  Some preliminaries
 
   - Be sure you have your python environment and editor ready
   - Open a Terminal window on your laptop
@@ -12,7 +12,7 @@
     - For convenience, set the OPENAI_API_KEY environment variable (see [OpenAI's tips](https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety))
     - Don't ever check it into a git repository or put it in user-visible code (e.g., Javascript)
 
-2.  Running basic completion queries
+## 2.  Running basic completion queries
 
   - First, go to the [OpenAI Playground page](https://platform.openai.com/playground)
   - Type ``What are some words that mean "clothing that you wear on your head`` into the input box and hit Submit.
@@ -22,30 +22,30 @@
     - Copy the code you have in Colab to a new python file, say ``reverse_dictionary.py``
     - Run ``python3 ./reverse_dictionary.py`` from the command line
 
-3.  Understanding the output
+## 3.  Understanding the output
   - choices array
   - finish_reason
   - parsing the response for what you care about
 
-4.  Understanding the input parameters
+## 4.  Understanding the input parameters
   - Stop sequence.   \n\n
   - Max words
   - Temperature
   - Getting logprobs
   - Topn
 
-5.  Models
+## 5.  Models
   - [Understand which models are available](https://platform.openai.com/docs/models/gpt-3)
   - Try your query in different models by changing the "model" parameter.
 
-6.  Iterating on your prompt
+## 6.  Iterating on your prompt
   - Back in the playground, try a few variations of zero-shot prompts.  Notice any differences in the results?
   - Is the output format consistent across different inputs for the same zero-shot prompting template?
   - Zero-shot vs. few-shot.  Try adding some examples to the prompt.  How to pick these?
   - Prompt guidlines.   [Basic tips from OpenAI](https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-openai-api)
 
 
-7.  Operational considerations
+## 7.  Operational considerations
   - Limits:
     - Token limits
       - 4096 for davinci, 2048 for curie
@@ -62,21 +62,21 @@
   - Tracking costs:  Be aware of the [pricing](https://openai.com/api/pricing/) page and the [usage](https://platform.openai.com/account/usage) page.
   - Adding retry logic
 
-8.   Make it interactive
+## 8.   Make it interactive
   - Intro to streamlit   https://streamlit.io/
   - Turning this into a simple streamlit dashboard
   - Add a text input box
   - Add a select box
   - Using caching to save queries
 
-9. Toward evaluation
+## 9. Toward evaluation
   - Make a training / test set
   - Updating the code to run in batches
   - For better hygiene, do a train/validation/test split.  https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7
   - Evaluation metrics
   - Keep a notebook  ([example](https://github.com/mit-ccc/MAS-S68-workshop/blob/main/experiments.md))
 
-10.  Useful resources
+## 10.  Useful resources
   - Other tutorials that are good:
     - OpenAI's official quickstart:  https://platform.openai.com/docs/quickstart
     - For journalists:  https://colab.research.google.com/drive/1rr0dxKpwK5zjch1V4eKjwwyVW-AzuDTw?utm_source=puntofisso&utm_medium=email
