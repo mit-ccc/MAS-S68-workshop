@@ -28,17 +28,24 @@
     - Copy the code you have in Colab to a new python file, say ``reverse_dictionary.py``
     - Run ``python3 ./reverse_dictionary.py`` from the command line
 
-## 3.  Understanding the output
+## 3.  Understanding the output  ([doc](https://platform.openai.com/docs/api-reference/completions/create))
   - choices array
   - finish_reason
-  - parsing the response for what you care about
+  - usage:  
+  - Parsing the response for what you care about
 
-## 4.  Understanding the input parameters
-  - Stop sequence.   \n\n
-  - Max words
-  - Temperature
-  - Getting logprobs
-  - Topn
+
+## 4.  Understanding the input parameters ([doc](https://platform.openai.com/docs/api-reference/completions/create))
+  - ``n``:   Number of completions to generate.  (Not useful to override if temperature is zero -- you'll just get repeats)
+  - ``stop``:   A list of sequences of characters that indicate generation should stop.
+    If it's omitted, generation will occur until max_tokens is reached.  ("\n\n" is a good-enough choice for many tasks in which the output is a list or a paragraph.)
+  - ``max_tokens``  Max tokens to generate;  note these do not correspond 1-1 with words.  See below. 
+  - ``logprobs``  Set to 1 to see the probability assigned to the most likely token, which can be useful for gauging the level of surprise at a given point of the text.
+     For > 1, you can see the next-most-likely alternatives (conditioned on the prompt and the already-generated to the left.)
+     Pair with ``echo`` parameter if you want to see logprobs for your prompt as well.
+  - ``temperature``   Informally, this is the "level of randomness".  0 is (intended to be) deterministic  ([blog post](https://algowriting.medium.com/gpt-3-temperature-setting-101-41200ff0d0be))
+  - frequency_penalty, presence_penalty
+
 
 ## 5.  Models
   - [Understand which models are available](https://platform.openai.com/docs/models/gpt-3)
