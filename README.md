@@ -62,14 +62,16 @@
       - Consider "graceful truncation" strategies if your task needs long prompts
     - [Rate limit](https://platform.openai.com/docs/guides/rate-limits)
       - Only 20 queries per minute in free tier, 3000 after 48 hours of adding payment method.
-    - Token quota    ([How to increase](https://help.openai.com/en/articles/6643435-how-do-i-get-more-tokens-or-increase-my-monthly-usage-limits))
+    - Monthly quota
+      - $18 credit when you sign up, $120 default quota when you add a payment method
+      - [How to increase](https://help.openai.com/en/articles/6643435-how-do-i-get-more-tokens-or-increase-my-monthly-usage-limits)
   - [OpenAI Status page](https://status.openai.com/) Subscribe to this to stay abreast of operational problems with the API.  (These have been more frequent lately, especially for davinci models.)
   - Tracking costs:  Be aware of the [pricing](https://openai.com/api/pricing/) page and the [usage](https://platform.openai.com/account/usage) page.
-  - Adding retry logic
+  - Adding retry logic to the Python call
 
 ## 8.   Make it interactive
-  - Intro to streamlit   https://streamlit.io/
-  - Turning this into a simple streamlit dashboard
+  - Intro to streamlit:   https://streamlit.io/
+  - Turn this into a simple streamlit dashboard
   - Add a text input box
   - Add a select box
   - Using caching to save queries
