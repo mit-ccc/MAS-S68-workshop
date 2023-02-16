@@ -24,27 +24,29 @@
   - How well does GPT-3 work for this with a straightforward "zero-shot" prompt?    Type ``What are some words that mean "clothing that you wear on your head?"`` into the input box and hit Submit.
   - You can see the corresponding API code for the query, in Python, by pressing the "View code" button above the playground
   - Copy this code and run it in a [Google Colab](https://colab.research.google.com/) session.   (Add ``print(response)`` to see the output)
+    - Note that you will need to specify your API key in the cell;  below ``import openai``, put ``openai.api_key = "<your_key>``
   - Now let's run the query in a standalone python script on your computer
     - Copy the code you have in Colab to a new python file, say ``reverse_dictionary.py``
     - Run ``python3 ./reverse_dictionary.py`` from the command line
 
-## 3.  Understanding the output  ([doc](https://platform.openai.com/docs/api-reference/completions/create))
-  - choices array
-  - finish_reason
-  - usage:  
-  - Parsing the response for what you care about
-
-
-## 4.  Understanding the input parameters ([doc](https://platform.openai.com/docs/api-reference/completions/create))
+## 3.  Understanding the input parameters ([doc](https://platform.openai.com/docs/api-reference/completions/create))
   - ``n``:   Number of completions to generate.  (Not useful to override if temperature is zero -- you'll just get repeats)
   - ``stop``:   A list of sequences of characters that indicate generation should stop.
     If it's omitted, generation will occur until max_tokens is reached.  ("\n\n" is a good-enough choice for many tasks in which the output is a list or a paragraph.)
   - ``max_tokens``  Max tokens to generate;  note these do not correspond 1-1 with words.  See below. 
-  - ``logprobs``  Set to 1 to see the probability assigned to the most likely token, which can be useful for gauging the level of surprise at a given point of the text.
-     For > 1, you can see the next-most-likely alternatives (conditioned on the prompt and the already-generated to the left.)
+  - ``logprobs``  Set to 1 to see the log probability (aka logprob) assigned to the most likely token, which can be useful for gauging the level of surprise at a given point of the text.
+     Set to > 1, to see the next-most-likely alternatives (conditioned on the prompt and the already-generated to the left.)
      Pair with ``echo`` parameter if you want to see logprobs for your prompt as well.
   - ``temperature``   Informally, this is the "level of randomness".  0 is (intended to be) deterministic  ([blog post](https://algowriting.medium.com/gpt-3-temperature-setting-101-41200ff0d0be))
   - frequency_penalty, presence_penalty
+
+## 4.  Understanding the output
+  - choices array:  (will contain $n$ elements)
+     - choices[].text:  The completion text iself.
+     - choices[].finish_reason:   ``stop`` or ``length`` depending on whether it hit a stop sequence or not.
+     - choices[].logprobs:   If logprobs is set, this will contain the log probabilities for the generated tokens ("token_logprobs") as well as the top-logprobs predicted tokens ("top_logprobs") with their logprobs for each token in the completion (and also in the prompt, if "echo" was set).  (Discussion question:  In what situation might the tokens in "top_logprobs" not contain the generated token, from "token_logprobs")   Two other arrays, ``text_offset`` and ``tokens``, will also appear here to tell you how the generated tokens map to the text.)
+  - usage:  Summarizes how many tokens you used in this query.  (See below).
+  - Parsing the response for what you care about
 
 
 ## 5.  Models
