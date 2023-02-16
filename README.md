@@ -3,7 +3,7 @@
 
 ## 1.  Some preliminaries
 
-  - Be sure you have your python environment and editor ready
+  - Be sure you have your Python environment and editor ready
   - Be sure you have already signed up for the [OpenAI API](https://openai.com/api/)
   - Open a Terminal window on your laptop
   - Install the openai Python library and streamlit (``pip install openai streamlit``)
@@ -20,9 +20,10 @@
   (Here are [100 examples of this task](https://github.com/mit-ccc/MAS-S68-workshop/blob/main/data/train.jsonl) from a research data set.)
   
   - First, go to the [OpenAI Playground page](https://platform.openai.com/playground)
-  - Type ``What are some words that mean "clothing that you wear on your head`` into the input box and hit Submit.
+  - Type ``What are some words that mean "clothing that you wear on your head?"`` into the input box and hit Submit.
+  
   - Translate the query to Python by pressing the "View code" button above the playground
-  - Copy the code and run it in a [Google Colab](https://colab.research.google.com/) session.   (Add ``print(response)``)
+  - Copy the code and run it in a [Google Colab](https://colab.research.google.com/) session.   (Add ``print(response)`` to see the output)
   - Now let's run the query in a standalone python script on your computer
     - Copy the code you have in Colab to a new python file, say ``reverse_dictionary.py``
     - Run ``python3 ./reverse_dictionary.py`` from the command line
@@ -69,12 +70,15 @@
   - Tracking costs:  Be aware of the [pricing](https://openai.com/api/pricing/) page and the [usage](https://platform.openai.com/account/usage) page.
   - Adding retry logic to the Python call
 
-## 8.   Make it interactive
+## 8.   Make it into an interactive dashboard
   - Intro to streamlit:   https://streamlit.io/
-  - Turn this into a simple streamlit dashboard
-  - Add a text input box
-  - Add a select box
-  - Using caching to save queries
+  - Let's turn our command-line script into a simple Streamlit dashboard.
+    - Import streamlitm, and add a streamlit_app() method that lays out:
+      - A text input box to capture the user's query (See [st.text_input](https://docs.streamlit.io/library/api-reference/widgets/st.text_input))
+      - A select box to control the number of alternatives generated (See [st.selectbox](https://docs.streamlit.io/library/api-reference/widgets/st.selectbox))
+      - A form wrapping these two elements with a submit button (See [st.form](https://docs.streamlit.io/library/api-reference/control-flow/st.form)) 
+    - Start your dashboard from the command line with ``streamlit run reverse_dictionary.py``.  It will open a browser window.
+  - Use caching (@st.cache_data decorations) to save API queries ([Streamlit caching](https://docs.streamlit.io/library/advanced-features/caching))
 
 ## 9. Toward evaluation
   - Make a training / test set
