@@ -4,16 +4,21 @@
 ## 1.  Some preliminaries
 
   - Be sure you have your python environment and editor ready
+  - Be sure you have already signed up for the [https://openai.com/api/](OpenAI API)
   - Open a Terminal window on your laptop
-  - Install openai Python library  (``pip install openai``)
-  - (Optional for today)  Install git and download our repo  [Install](https://github.com/git-guides/install-git)
-  - (Optional for today)   Run from a virtual environment   ([Link](https://towardsdatascience.com/virtual-environments-104c62d48c54#:~:text=A%20virtual%20environment%20is%20a,a%20system%2Dwide%20Python))
-  - Understand your API key
+  - Install the openai Python library and streamlit (``pip install openai streamlit``)
+  - (Optional for today)  [Install git](https://github.com/git-guides/install-git) and [clone our repo](https://github.com/mit-ccc/MAS-S68-workshop)
+  - (Optional for today)   Run from within a virtual environment   (see [here](https://towardsdatascience.com/virtual-environments-104c62d48c54#:~:text=A%20virtual%20environment%20is%20a,a%20system%2Dwide%20Python))
+  - Find your API key
+    - Get it from [here](https://platform.openai.com/account/api-keys)
     - For convenience, set the OPENAI_API_KEY environment variable (see [OpenAI's tips](https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety))
     - Don't ever check it into a git repository or put it in user-visible code (e.g., Javascript)
 
 ## 2.  Running basic completion queries
 
+  Our task today:  Let's make a system that lets you describe a word and then guesses the word you mean.
+  (Here are [100 examples of this task](https://github.com/mit-ccc/MAS-S68-workshop/blob/main/data/train.jsonl) from a research data set.)
+  
   - First, go to the [OpenAI Playground page](https://platform.openai.com/playground)
   - Type ``What are some words that mean "clothing that you wear on your head`` into the input box and hit Submit.
   - Translate the query to Python by pressing the "View code" button above the playground
