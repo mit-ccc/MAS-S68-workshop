@@ -1,6 +1,8 @@
 
 # MAS.S68 Python workshop 1
 
+**Note**:  This workshop assumes that you have a basic understanding of Python, and have written and run Python programs on your computer before.   If you're brand new to Python, please see [Python for Beginners](https://www.python.org/about/gettingstarted/) first.
+
 ## 1.  Some preliminaries
 
   - Be sure you have your Python environment and editor ready
