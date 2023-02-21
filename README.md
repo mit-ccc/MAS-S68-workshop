@@ -119,6 +119,8 @@
   - Other tutorials that are good:
     - OpenAI's official quickstart:  https://platform.openai.com/docs/quickstart
     - For journalists:  https://colab.research.google.com/drive/1rr0dxKpwK5zjch1V4eKjwwyVW-AzuDTw?utm_source=puntofisso&utm_medium=email
+  - Prompt engineering stuff
+    - [Prompt Engineering Guide from DAIR](https://github.com/dair-ai/Prompt-Engineering-Guide)
     - Prompt generation libraries -- https://github.com/microsoft/prompt-engine
     - [GPT-3 Parameters and Prompt Design](https://towardsdatascience.com/gpt-3-parameters-and-prompt-design-1a595dc5b405)
 
