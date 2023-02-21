@@ -1,6 +1,10 @@
 
 # MAS.S68 Python workshop 1
 
+([Zoom Recording](https://us02web.zoom.us/rec/play/BKzMuph7VR1jHHa3XuC8opeLiS1vmO7DhiFcgEXBGYBwf7AHIxVU2CWPiQqqQWm51Fi3GY2XprjCF3Fw.KABKHlCX3W8gfCQo?continueMode=true&_x_zm_rtaid=HHGod3FxRc6tbq58z9razA.1676939169419.ac4f84a2caac62e0f284604eccefc662&_x_zm_rhtaid=369))
+
+
+
 **Note**:  This workshop assumes that you have a basic understanding of Python, and have written and run Python programs on your computer before.   If you're brand new to Python, please see [Python for Beginners](https://www.python.org/about/gettingstarted/) first.
 
 ## 1.  Some preliminaries
