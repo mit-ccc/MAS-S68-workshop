@@ -33,7 +33,7 @@
     - Note that you will need to specify your API key in the cell;  below ``import openai``, put ``openai.api_key = "<your_key>``
   - Now let's run the query in a standalone python script on your computer
     - Copy the code you have in Colab to a new python file, say ``reverse_dictionary.py``
-    - Run ``python3 ./reverse_dictionary.py`` from the command line
+    - Run ``python3 ./reverse_dictionary.py`` from the command line.   You should get an OpenAI API response in JSON format.  
 
 ## 3.  Understanding the input parameters ([doc](https://platform.openai.com/docs/api-reference/completions/create))
   - ``n``:   Number of completions to generate.  (Not useful to override if temperature is zero -- you'll just get repeats)
@@ -102,7 +102,7 @@
   - Use caching (@st.cache_data decorations) to save API queries ([Streamlit caching](https://docs.streamlit.io/library/advanced-features/caching))
 
 ## 9. Evaluating our system
-  - First let's make training / validation sets for our task.
+  - First let's make training / validation sets for our task. 
   - As we are not (yet) doing fine-tuning of the model, the train set is solely for identifying prompt examples.
   - There are a few data sets of (description, word) pairs out there already,  and we'll use one from a research paper by Hill et al originally published back in 2016 (https://arxiv.org/abs/1504.00548).
   - Note that having just a train/validation split is just a shortcut for today's exercise.   For better
@@ -111,9 +111,9 @@
     That's because if we've tried a variety of configurations (number of prompt examples, model type, instruction wording), the one with the
     best performance on the validation set may not be the one with the best performance on new data.
   - Next we update the code to run in batches.  Here it may be important to pay attention to your rate limit.
-  - Evaluation metrics:   For our task, we can compute raw accuracy by counting the rate at which GPT-3's best guess is equal to the labeled guess.  (Discussion:  What shortcomings
-    does this have as an evaluation metric?)
+  - Evaluation metrics:   For our task, we can compute raw accuracy by counting the rate at which GPT-3's best guess is equal to the labeled guess.  (Discussion:  What shortcomings does this have as an evaluation metric?)
   - Keep a notebook  ([example](https://github.com/mit-ccc/MAS-S68-workshop/blob/main/experiments.md))
+  - **Action item for this section**:   Run the evaluation, or a shortened version of the evaluation (first 20 queries?), yourself.  Try varying the prompt, the number of examples, and the model.  What's the best accuracy you can achieve?
 
 ## 10.  Useful resources
   - Other tutorials that are good:
