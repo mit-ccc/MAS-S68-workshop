@@ -30,7 +30,7 @@
   - How well does GPT-3 work for this with a straightforward "zero-shot" prompt?    Type ``What are some words that mean "clothing that you wear on your head?"`` into the input box and hit Submit.
   - You can see the corresponding API code for the query, in Python, by pressing the "View code" button above the playground
   - Copy this code and run it in a [Google Colab](https://colab.research.google.com/) session.   (Add ``print(response)`` to see the output)
-    - Note that you will need to specify your API key in the cell;  below ``import openai``, put ``openai.api_key = "<your_key>``
+    - Note that you will need to specify your API key in the cell;  below ``import openai``, put ``openai.api_key = "<your_key>"``
   - Now let's run the query in a standalone python script on your computer
     - Copy the code you have in Colab to a new python file, say ``reverse_dictionary.py``
     - Run ``python3 ./reverse_dictionary.py`` from the command line.   You should get an OpenAI API response in JSON format.  
